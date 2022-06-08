@@ -8,7 +8,7 @@ using System.Linq;
 
 namespace CM.Dominio.Repositories
 {
-    public class AddressRepository : IBaseRepository<Address, int>
+    public class AddressRepository : IAddressRepository
     {
         private readonly ApplicationDbContext context;
 
@@ -17,47 +17,35 @@ namespace CM.Dominio.Repositories
             context = _context;
         }
 
-        public Address Add(Address entidad)
+        public bool AddClientAddress(Address address, int clientId)
         {
-            context.Add(entidad);
-            return context.SaveChanges() > 0 ? entidad : null;
+            address.ClientId = clientId;
+            context.Addresses.Add(address);
+            return context.SaveChanges() > 0;
         }
 
-        public void Delete(int id)
+        public IEnumerable<Address> GetClientAddresses(int clientId)
         {
-            var address = context.Addresses.SingleOrDefault(x => x.Id == id);
-            context.Remove(address);
-        }
-
-        public IEnumerable<Address> GetAll()
-        {
-            return context.Addresses
+           return context.Addresses
+                .Include(x => x.Client)
                 .Include(x => x.Country)
                 .Include(x => x.City)
-                .Include(x => x.Client);
+                .Where(x => x.ClientId == clientId);
         }
 
-        public Address GetOne(int id)
+        public bool RemoveClientAddress(int addressId, int clientId)
         {
-            return context.Addresses
-                 .Include(x => x.Country)
-                 .Include(x => x.City)
-                 .Include(x => x.Client)
-                 .SingleOrDefault(x => x.Id == id);
+            var address = context.Addresses.SingleOrDefault(x => x.Id == addressId && x.ClientId == clientId);
+            context.Addresses.Add(address);
+            return context.SaveChanges() > 0;
         }
 
-        public void Update(int id, Address entidad)
+        public void RemoveClientAddresses(int clientId)
         {
-            var address = context.Addresses.SingleOrDefault(x => x.Id == id);
-
-            address.CountryId = entidad.CountryId;
-            address.CityId = entidad.CityId;
-            address.StreetName = entidad.StreetName;
-            address.BuildingName = entidad.BuildingName;
-            address.FullAddress = entidad.FullAddress;
-
-            context.Update(address);
-            context.SaveChanges();
+            var addresses = context.Addresses.Where(x => x.ClientId == clientId);
+            
+            if(addresses.Any())
+                context.RemoveRange(addresses);
         }
     }
 }

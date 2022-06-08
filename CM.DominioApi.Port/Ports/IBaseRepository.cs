@@ -11,7 +11,7 @@ namespace CM.DominioApi.Port.Ports
         IEnumerable<T> GetAll();
         T GetOne(TKey id);
         T Add(T entidad);
-        void Update(TKey id, T entidad);
-        void Delete(TKey id);
+        bool Update(TKey id, T entidad);
+        bool Delete(TKey id);
     }
 }

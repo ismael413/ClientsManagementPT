@@ -1,0 +1,5 @@
+C:\Users\Administrator.DESKTOP-NKPOVCB\source\repos\ClientsManagementPT\ClientsManagementPT\CM.Dominio\obj\Debug\net5.0\CM.Dominio.csproj.AssemblyReference.cache
+C:\Users\Administrator.DESKTOP-NKPOVCB\source\repos\ClientsManagementPT\ClientsManagementPT\CM.Dominio\obj\Debug\net5.0\CM.Dominio.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Administrator.DESKTOP-NKPOVCB\source\repos\ClientsManagementPT\ClientsManagementPT\CM.Dominio\obj\Debug\net5.0\CM.Dominio.AssemblyInfoInputs.cache
+C:\Users\Administrator.DESKTOP-NKPOVCB\source\repos\ClientsManagementPT\ClientsManagementPT\CM.Dominio\obj\Debug\net5.0\CM.Dominio.AssemblyInfo.cs
+C:\Users\Administrator.DESKTOP-NKPOVCB\source\repos\ClientsManagementPT\ClientsManagementPT\CM.Dominio\obj\Debug\net5.0\CM.Dominio.csproj.CoreCompileInputs.cache

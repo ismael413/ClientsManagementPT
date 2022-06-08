@@ -10,6 +10,8 @@ namespace CM.DominioApi.Port.Models.Addreses
     public class City : BaseEntityProperties
     {
         //relaciones
+        public int CountryId { get; set; }
+        public Country Country { get; set; }
         public ICollection<Address> Addresses { get; set; }
     }
 }
