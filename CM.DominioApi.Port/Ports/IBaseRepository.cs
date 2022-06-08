@@ -8,6 +8,8 @@ namespace CM.DominioApi.Port.Ports
 {
     public interface IBaseRepository<T, TKey>  
     {
+        IEnumerable<T> GetAll();
+        T GetOne(TKey id);
         T Add(T entidad);
         void Update(TKey id, T entidad);
         void Delete(TKey id);

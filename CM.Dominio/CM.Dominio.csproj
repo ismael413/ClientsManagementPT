@@ -5,8 +5,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Repositories\" />
     <Folder Include="Tests\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CM.DominioApi.Port\CM.DominioApi.Port.csproj" />
+    <ProjectReference Include="..\CM.Persistence.Adapter\CM.Persistence.Adapter.csproj" />
   </ItemGroup>
 
 </Project>

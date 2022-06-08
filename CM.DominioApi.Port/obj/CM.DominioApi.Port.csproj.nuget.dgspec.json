@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Administrator.DESKTOP-NKPOVCB\\source\\repos\\ClientsManagementPT\\CM.DominioApi.Port\\CM.DominioApi.Port.csproj": {}
+    "C:\\Users\\Administrator.DESKTOP-NKPOVCB\\source\\repos\\ClientsManagementPT\\ClientsManagementPT\\CM.DominioApi.Port\\CM.DominioApi.Port.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Administrator.DESKTOP-NKPOVCB\\source\\repos\\ClientsManagementPT\\CM.DominioApi.Port\\CM.DominioApi.Port.csproj": {
+    "C:\\Users\\Administrator.DESKTOP-NKPOVCB\\source\\repos\\ClientsManagementPT\\ClientsManagementPT\\CM.DominioApi.Port\\CM.DominioApi.Port.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Administrator.DESKTOP-NKPOVCB\\source\\repos\\ClientsManagementPT\\CM.DominioApi.Port\\CM.DominioApi.Port.csproj",
+        "projectUniqueName": "C:\\Users\\Administrator.DESKTOP-NKPOVCB\\source\\repos\\ClientsManagementPT\\ClientsManagementPT\\CM.DominioApi.Port\\CM.DominioApi.Port.csproj",
         "projectName": "CM.DominioApi.Port",
-        "projectPath": "C:\\Users\\Administrator.DESKTOP-NKPOVCB\\source\\repos\\ClientsManagementPT\\CM.DominioApi.Port\\CM.DominioApi.Port.csproj",
+        "projectPath": "C:\\Users\\Administrator.DESKTOP-NKPOVCB\\source\\repos\\ClientsManagementPT\\ClientsManagementPT\\CM.DominioApi.Port\\CM.DominioApi.Port.csproj",
         "packagesPath": "C:\\Users\\Administrator.DESKTOP-NKPOVCB\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Administrator.DESKTOP-NKPOVCB\\source\\repos\\ClientsManagementPT\\CM.DominioApi.Port\\obj\\",
+        "outputPath": "C:\\Users\\Administrator.DESKTOP-NKPOVCB\\source\\repos\\ClientsManagementPT\\ClientsManagementPT\\CM.DominioApi.Port\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -43,6 +43,12 @@
       "frameworks": {
         "net5.0": {
           "targetAlias": "net5.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[5.0.17, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",

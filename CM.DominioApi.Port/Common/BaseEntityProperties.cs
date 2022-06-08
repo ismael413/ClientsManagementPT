@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace CM.DominioApi.Port.Common
 {
-    public class BaseEntityProperties
+    public abstract class BaseEntityProperties
     {
         public int Id { get; set; }
         [Required, MaxLength(50, ErrorMessage = "Name cannot exceed 50 characters")]

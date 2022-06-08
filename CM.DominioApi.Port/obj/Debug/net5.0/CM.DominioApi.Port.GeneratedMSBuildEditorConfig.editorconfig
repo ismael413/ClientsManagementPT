@@ -7,4 +7,4 @@ build_property.PublishSingleFile =
 build_property.IncludeAllContentForSelfExtract = 
 build_property._SupportedPlatformList = Android,iOS,Linux,macOS,Windows
 build_property.RootNamespace = CM.DominioApi.Port
-build_property.ProjectDir = C:\Users\Administrator.DESKTOP-NKPOVCB\source\repos\ClientsManagementPT\CM.DominioApi.Port\
+build_property.ProjectDir = C:\Users\Administrator.DESKTOP-NKPOVCB\source\repos\ClientsManagementPT\ClientsManagementPT\CM.DominioApi.Port\

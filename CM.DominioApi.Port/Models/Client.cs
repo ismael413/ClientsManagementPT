@@ -1,4 +1,5 @@
 ﻿using CM.DominioApi.Port.Common;
+using CM.DominioApi.Port.Models.Addreses;
 using System;
 using System.Collections.Generic;
 using System.Linq;
