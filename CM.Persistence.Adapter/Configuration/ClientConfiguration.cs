@@ -16,6 +16,12 @@ namespace CM.Persistence.Adapter.Configuration
             builder.Property(x => x.Name).IsRequired().HasMaxLength(50);
             builder.Property(x => x.LastName).IsRequired().HasMaxLength(50);
 
+            //relaciones
+            builder
+               .HasOne(x => x.Enterprise)
+               .WithMany(x => x.Clients)
+               .OnDelete(DeleteBehavior.Cascade);
+
             builder
                 .HasMany(x => x.Addresses)
                 .WithOne(x => x.Client)

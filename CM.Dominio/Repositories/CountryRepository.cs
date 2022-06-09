@@ -26,14 +26,14 @@ namespace CM.Dominio.Repositories
             if (ExistsWithNameOnCreating(entidad.Name))
                 return null;
 
-            context.Add(entidad);
+            context.Countries.Add(entidad);
             context.SaveChanges();
-            return entidad;
+            return context.Countries.Last();
         }
 
         public bool Delete(int id)
         {
-            var country = context.Countries.SingleOrDefault(x => x.Id == id);
+            var country = context.Countries.FirstOrDefault(x => x.Id == id);
 
             //Hacer validaciones
             if (HasRelatedEntityOnDatabase(country.Id))
@@ -70,21 +70,19 @@ namespace CM.Dominio.Repositories
             return context.Countries
                  .Include(x => x.Cities)
                  .Include(x => x.Addresses)
-                 .SingleOrDefault(x => x.Id == id);
+                 .FirstOrDefault(x => x.Id == id);
         }
 
         public bool HasRelatedEntityOnDatabase(int id)
         {
             //si este pais pertenece a una direccion registrada o tiene una o varias ciudades relacionadas...
-            return context.Countries
-                .Include(x => x.Addresses)
-                .Include(x => x.Cities)
-                .Any(x => x.Id == id && (x.Addresses.Count > 0 || x.Cities.Count > 0));
+            return context.Addresses.Any(x => x.CountryId == id) 
+                || context.Cities.Any(x => x.CountryId == id);
         }
 
         public bool Update(int id, Country entidad)
         {
-            var country = context.Countries.SingleOrDefault(x => x.Id == id);
+            var country = context.Countries.FirstOrDefault(x => x.Id == id);
 
             country.Name = entidad.Name;
 

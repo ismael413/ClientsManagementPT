@@ -25,21 +25,23 @@ namespace CM.Dominio.Repositories
             if (ExistsWithNameOnCreating(entidad.Name))
                 return null;
 
-            context.Add(entidad);
+            context.Enterprises.Add(entidad);
             context.SaveChanges();
 
-            return entidad;
+            return context.Enterprises.ToList().Last();
         }
 
         public bool Delete(int id)
         {
-            var enterprise = context.Enterprises.SingleOrDefault(x => x.Id == id);
-
             //hacer validaciones
-            if (HasRelatedEntityOnDatabase(enterprise.Id))
+            if (HasRelatedEntityOnDatabase(id))
                 return false;
 
-            context.Remove(enterprise);
+            var enterprise = context.Enterprises.Find(id);
+
+            if (enterprise == null) return false;
+
+            context.Enterprises.Remove(enterprise);
             return context.SaveChanges() > 0;
         }
 
@@ -67,20 +69,20 @@ namespace CM.Dominio.Repositories
         {
             return context.Enterprises
                  .Include(x => x.Clients)
-                 .SingleOrDefault(x => x.Id == id);
+                 .FirstOrDefault(x => x.Id == id);
         }
 
         public bool HasRelatedEntityOnDatabase(int id)
         {
             //si esta empresa posee clientes registrados...
-            return context.Enterprises
-                .Include(x => x.Clients)
-                .Any(x => x.Id == id && x.Clients.Count > 0);
+            return context.Clients.Any(x => x.EnterpriseId == id);
         }
 
         public bool Update(int id, Enterprise entidad)
         {
-            var enterprise = context.Enterprises.SingleOrDefault(x => x.Id == id);
+            var enterprise = context.Enterprises.FirstOrDefault(x => x.Id == id);
+
+            if (enterprise == null) return false;
 
             enterprise.Name = entidad.Name;
             enterprise.Description = entidad.Description;
@@ -92,7 +94,7 @@ namespace CM.Dominio.Repositories
                 return false;
             }
 
-            context.Update(enterprise);
+            context.Enterprises.Update(enterprise);
             return context.SaveChanges() > 0;
         }
     }

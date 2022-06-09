@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "RdnpRF3BuT8N045Z1qH4UCzQEFXNAhzeUwicD0znv1dH1NDkQGY9WNypUB+NqX1i87teAAIE+I4py+i6zbx91w==",
+  "dgSpecHash": "NNuu8qoyod30O2A+IKYwOr3WlLpwg4muiaphthSpdfeTl+3e5T1OSHLXGu4+SMO9BsWcIf7VvGvQH2KeEjGWig==",
   "success": true,
   "projectFilePath": "C:\\Users\\Administrator.DESKTOP-NKPOVCB\\source\\repos\\ClientsManagementPT\\ClientsManagementPT\\CM.ApiREST.Adapter\\CM.ApiREST.Adapter.csproj",
   "expectedPackageFiles": [
@@ -9,6 +9,7 @@
     "C:\\Users\\Administrator.DESKTOP-NKPOVCB\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\5.0.17\\microsoft.aspnetcore.cryptography.internal.5.0.17.nupkg.sha512",
     "C:\\Users\\Administrator.DESKTOP-NKPOVCB\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\5.0.17\\microsoft.aspnetcore.cryptography.keyderivation.5.0.17.nupkg.sha512",
     "C:\\Users\\Administrator.DESKTOP-NKPOVCB\\.nuget\\packages\\microsoft.aspnetcore.identity.entityframeworkcore\\5.0.17\\microsoft.aspnetcore.identity.entityframeworkcore.5.0.17.nupkg.sha512",
+    "C:\\Users\\Administrator.DESKTOP-NKPOVCB\\.nuget\\packages\\microsoft.aspnetcore.mvc.versioning\\5.0.0\\microsoft.aspnetcore.mvc.versioning.5.0.0.nupkg.sha512",
     "C:\\Users\\Administrator.DESKTOP-NKPOVCB\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
     "C:\\Users\\Administrator.DESKTOP-NKPOVCB\\.nuget\\packages\\microsoft.entityframeworkcore\\5.0.17\\microsoft.entityframeworkcore.5.0.17.nupkg.sha512",
     "C:\\Users\\Administrator.DESKTOP-NKPOVCB\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\5.0.17\\microsoft.entityframeworkcore.abstractions.5.0.17.nupkg.sha512",

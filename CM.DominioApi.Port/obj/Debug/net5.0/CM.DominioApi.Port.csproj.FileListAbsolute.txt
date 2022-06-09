@@ -9,4 +9,3 @@ C:\Users\Administrator.DESKTOP-NKPOVCB\source\repos\ClientsManagementPT\ClientsM
 C:\Users\Administrator.DESKTOP-NKPOVCB\source\repos\ClientsManagementPT\ClientsManagementPT\CM.DominioApi.Port\obj\Debug\net5.0\CM.DominioApi.Port.dll
 C:\Users\Administrator.DESKTOP-NKPOVCB\source\repos\ClientsManagementPT\ClientsManagementPT\CM.DominioApi.Port\obj\Debug\net5.0\ref\CM.DominioApi.Port.dll
 C:\Users\Administrator.DESKTOP-NKPOVCB\source\repos\ClientsManagementPT\ClientsManagementPT\CM.DominioApi.Port\obj\Debug\net5.0\CM.DominioApi.Port.pdb
-C:\Users\Administrator.DESKTOP-NKPOVCB\source\repos\ClientsManagementPT\ClientsManagementPT\CM.DominioApi.Port\obj\Debug\net5.0\CM.DominioApi.Port.csproj.AssemblyReference.cache

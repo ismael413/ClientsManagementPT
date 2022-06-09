@@ -51,7 +51,7 @@ namespace CM.ApiREST.Adapter.Controllers.v1
             var result = cityRepository.Add(city);
 
             return result != null ?
-                  CreatedAtAction(nameof(GetCity), city.Id)
+                  RedirectToAction(nameof(GetCity), city.Id)
                 : NoContent();
         }
 

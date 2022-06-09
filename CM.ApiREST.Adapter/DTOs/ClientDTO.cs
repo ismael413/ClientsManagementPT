@@ -11,7 +11,8 @@ namespace CM.ApiREST.Adapter.DTOs
         public string Name { get; set; }
         public string LastName { get; set; }
         public int Age { get; set; }
-        public char Genre { get; set; }
+        public string Genre { get; set; }
+        public int EnterpriseId { get; set; }
 
         //propiedades no mapeadas en la BD
         public string FullName { get; set; }

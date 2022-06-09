@@ -8,7 +8,8 @@ using System.Threading.Tasks;
 
 namespace CM.DominioApi.Port.Ports
 {
-    public interface IClientRepository<T, TKey> where T: Client
+    public interface IClientRepository<T, TKey>:
+        IClientsValidations
     {
         IEnumerable<T> GetAll();
         T GetOne(TKey id);

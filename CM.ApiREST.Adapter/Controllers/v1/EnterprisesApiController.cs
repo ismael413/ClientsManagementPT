@@ -34,7 +34,7 @@ namespace CM.ApiREST.Adapter.Controllers.v1
         [HttpGet("{id}")]
         public IActionResult GetEnterprise(int id)
         {
-            var result = enterpriseRepository.GetOne(id);
+            Enterprise result = enterpriseRepository.GetOne(id);
             return Ok(result);
         }
 
@@ -46,9 +46,7 @@ namespace CM.ApiREST.Adapter.Controllers.v1
 
             var result = enterpriseRepository.Add(enterprise);
 
-            return result != null ? 
-                  CreatedAtAction(nameof(GetEnterprise), enterprise.Id) 
-                : NoContent();
+            return Ok(result);
         }
 
         [HttpPut]
@@ -57,24 +55,17 @@ namespace CM.ApiREST.Adapter.Controllers.v1
         {
             var enterprise = mapper.Map<Enterprise>(enterpriseDTO);
 
-            var result = enterpriseRepository.Update(id, enterprise);
+            bool result = enterpriseRepository.Update(id, enterprise);
 
-            return result ?
-                  RedirectToAction(nameof(GetEnterprise), id)
-                : NoContent();
+            return Ok(result);
         }
 
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
-            var enterprise = enterpriseRepository.GetOne(id);
-            if (enterprise == null) return NotFound();
-         
-            var result = enterpriseRepository.Delete(enterprise.Id);
+            bool result = enterpriseRepository.Delete(id);
 
-            return result ?
-                RedirectToAction(nameof(GetEnterprises))
-                : NoContent();
+            return Ok(result);
         }
     }
 }

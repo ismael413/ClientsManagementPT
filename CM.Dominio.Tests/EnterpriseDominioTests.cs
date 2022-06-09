@@ -95,7 +95,7 @@ namespace CM.Dominio.Tests
                 Id = 15,
                 Name = "Name 1",
                 LastName = "Lastname 1",
-                Genre = 'M',
+                Genre = "M",
                 Age = 32,
                 EnterpriseId = 4
             });

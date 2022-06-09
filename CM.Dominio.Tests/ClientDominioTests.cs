@@ -48,7 +48,7 @@ namespace CM.Dominio.Tests
                     LastName = "Sgundo Nombre",
                     Age = 32,
                     EnterpriseId = 1,
-                    Genre = 'M'
+                    Genre = "M"
                 },
 
                 new Client()
@@ -58,7 +58,7 @@ namespace CM.Dominio.Tests
                     LastName = fullName[1],
                     Age = 32,
                     EnterpriseId = 1,
-                    Genre = 'M'
+                    Genre = "M"
                 }
             });
             context.SaveChanges();
@@ -71,7 +71,7 @@ namespace CM.Dominio.Tests
                 LastName = fullName[1],
                 Age = 32,
                 EnterpriseId = 1,
-                Genre = 'M'
+                Genre = "M"
             });
 
             //Assert
@@ -92,7 +92,7 @@ namespace CM.Dominio.Tests
                 LastName = "Primer Apellido",
                 Age = 32,
                 EnterpriseId = 1,
-                Genre = 'M'
+                Genre = "M"
             });
             context.Clients.Add(new Client()
             {
@@ -101,7 +101,7 @@ namespace CM.Dominio.Tests
                 LastName = "Apellido",
                 Age = 32,
                 EnterpriseId = 1,
-                Genre = 'M'
+                Genre = "M"
             });
             context.SaveChanges();
 
@@ -127,7 +127,7 @@ namespace CM.Dominio.Tests
                 Name = "Client",
                 LastName = "With Addresses",
                 Age = 32,
-                Genre = 'M',
+                Genre = "M",
                 Id = 10
             });
 

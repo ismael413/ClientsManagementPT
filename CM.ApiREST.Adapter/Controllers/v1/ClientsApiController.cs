@@ -54,9 +54,7 @@ namespace CM.ApiREST.Adapter.Controllers.v1
 
             var result = clientRepository.Add(client);
 
-            return result != null ?
-                  CreatedAtAction(nameof(GetClient), client.Id)
-                : NoContent();
+            return Ok(result);
         }
 
         [HttpPut]
@@ -68,7 +66,7 @@ namespace CM.ApiREST.Adapter.Controllers.v1
             var result = clientRepository.Update(id, client);
 
             return result ?
-                  RedirectToAction(nameof(GetClient), id)
+                  RedirectToAction(nameof(GetClient), new { id = client.Id })
                 : NoContent();
         }
 

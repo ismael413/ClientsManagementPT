@@ -51,7 +51,7 @@ namespace CM.ApiREST.Adapter.Controllers
             var result = countryRepository.Add(country);
 
             return result != null ?
-                  CreatedAtAction(nameof(GetCountry), country.Id)
+                  RedirectToAction(nameof(GetCountry), country.Id)
                 : NoContent();
         }
 

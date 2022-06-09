@@ -1,3 +1,9 @@
+using CM.ApiREST.Adapter.DTOs;
+using CM.Dominio.Repositories;
+using CM.DominioApi.Port.Models;
+using CM.DominioApi.Port.Models.Addreses;
+using CM.DominioApi.Port.Ports;
+using CM.Persistence.Adapter.Context;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -26,8 +32,29 @@ namespace CM.ApiREST.Adapter
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
             services.AddControllers();
+            services.AddApiVersioning();
+
+            //Entities
+            services.AddScoped<IBaseRepository<Enterprise, int>, EnterpriseRepository>();
+            services.AddScoped<IClientRepository<Client,int>, ClientRepository>();
+            services.AddScoped<IAddressRepository, AddressRepository>();
+
+            //DbContext
+            services.AddDbContext<ApplicationDbContext>();
+
+            //Mappers
+            services.AddAutoMapper(config =>
+            {
+                config.CreateMap<EnterpriseDTO, Enterprise>();
+                config.CreateMap<ClientDTO, Client>();
+                config.CreateMap<AddressDTO, Address>();
+                config.CreateMap<CountryDTO, Country>();
+                config.CreateMap<CityDTO, City>();
+
+            }, typeof(Startup));
+
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "CM.ApiREST.Adapter", Version = "v1" });

@@ -8,8 +8,7 @@ using System.Linq;
 
 namespace CM.Dominio.Repositories
 {
-    public class AddressRepository : IAddressRepository,
-        IAddressValidations
+    public class AddressRepository : IAddressRepository
     {
         private readonly ApplicationDbContext context;
 
@@ -26,12 +25,12 @@ namespace CM.Dominio.Repositories
 
             context.Addresses.Add(address);
             context.SaveChanges();
-            return address;
+            return context.Addresses.ToList().Last();
         }
 
         public bool Delete(int id)
         {
-            var address = context.Addresses.SingleOrDefault(x => x.Id == id);
+            var address = context.Addresses.FirstOrDefault(x => x.Id == id);
             context.Addresses.Remove(address);
             return context.SaveChanges() > 0;
         }
@@ -67,7 +66,7 @@ namespace CM.Dominio.Repositories
         public Address GetOne(int id)
         {
             return context.Addresses
-               .SingleOrDefault(x => x.Id == id);
+               .FirstOrDefault(x => x.Id == id);
         }
 
         public void RemoveClientAddresses(IEnumerable<Address> addresses)
@@ -82,7 +81,7 @@ namespace CM.Dominio.Repositories
 
         public bool Update(int id, Address entidad)
         {
-            var address = context.Addresses.SingleOrDefault(x => x.Id == id);
+            var address = context.Addresses.FirstOrDefault(x => x.Id == id);
 
             address.ClientId = entidad.ClientId;
             address.CountryId = entidad.CountryId;

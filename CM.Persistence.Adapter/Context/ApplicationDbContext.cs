@@ -20,9 +20,11 @@ namespace CM.Persistence.Adapter.Context
         {
             base.OnModelCreating(builder);
 
+            builder.ApplyConfiguration(new EnterpriseConfiguration());
             builder.ApplyConfiguration(new ClientConfiguration());
+            builder.ApplyConfiguration(new CountryConfiguration());
+            builder.ApplyConfiguration(new CityConfiguration());
             builder.ApplyConfiguration(new AddressConfiguration());
-
         }
 
         public DbSet<Enterprise> Enterprises { get; set; }

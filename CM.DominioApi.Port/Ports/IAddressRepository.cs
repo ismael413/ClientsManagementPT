@@ -8,7 +8,8 @@ using System.Threading.Tasks;
 namespace CM.DominioApi.Port.Ports
 {
     public interface IAddressRepository :
-        IBaseRepository<Address,int>
+        IBaseRepository<Address,int>,
+        IAddressValidations
     {
         string SetFullAddressString(Address address);
         IEnumerable<Address> GetAddressesByClientId(int clientId);

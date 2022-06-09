@@ -26,20 +26,21 @@ namespace CM.Dominio.Repositories
             if (ExistsWithNameForSameCountryOnCreating(entidad.Name, entidad.CountryId))
                 return null;
 
-            context.Add(entidad);
-            return context.SaveChanges() > 0 ? entidad : null;
+            context.Cities.Add(entidad);
+            context.SaveChanges();
+
+            return context.Cities.ToList().Last();
         }
 
         public bool HasRelatedEntityOnDatabase(int id)
         {
             //si esta ciudad pertenece a una direccion registrada...
-            return context.Cities
-                .Any(x => x.Id == id && x.Addresses.Count > 0);
+            return context.Addresses.Any(x => x.CityId == id);
         }
 
         public bool Delete(int id)
         {
-            var city = context.Cities.SingleOrDefault(x => x.Id == id);
+            var city = context.Cities.FirstOrDefault(x => x.Id == id);
 
             //hacer validaciones
             if (HasRelatedEntityOnDatabase(city.Id))
@@ -75,12 +76,12 @@ namespace CM.Dominio.Repositories
             return context.Cities
                  .Include(x => x.Addresses)
                  .Include(x => x.Country)
-                 .SingleOrDefault(x => x.Id == id);
+                 .FirstOrDefault(x => x.Id == id);
         }
 
         public bool Update(int id, City entidad)
         {
-            var city = context.Cities.SingleOrDefault(x => x.Id == id);
+            var city = context.Cities.FirstOrDefault(x => x.Id == id);
             city.Name = entidad.Name;
             city.CountryId = entidad.CountryId;
 

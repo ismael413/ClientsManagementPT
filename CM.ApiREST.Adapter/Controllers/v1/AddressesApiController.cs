@@ -51,7 +51,7 @@ namespace CM.ApiREST.Adapter.Controllers.v1
             var result = addressRepository.Add(address);
 
             return result != null ?
-                  CreatedAtAction(nameof(GetAddress), address.Id)
+                  RedirectToAction(nameof(GetAddress), address.Id)
                 : NoContent();
         }
 

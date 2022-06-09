@@ -11,9 +11,7 @@ using System.Threading.Tasks;
 
 namespace CM.Dominio.Repositories
 {
-    public class ClientRepository :
-        IClientsValidations,
-        IClientRepository<Client, int>
+    public class ClientRepository : IClientRepository<Client, int>
     {
         private readonly ApplicationDbContext context;
         private readonly IAddressRepository addressRepository;
@@ -31,8 +29,9 @@ namespace CM.Dominio.Repositories
             if (ExistsWithNameOnCreating(entidad.Name + " " + entidad.LastName))
                 return null;
 
-            context.Add(entidad);
-            return entidad;
+            context.Clients.Add(entidad);
+            context.SaveChanges();
+            return context.Clients.Last();
         }
 
         public bool ConfirmStatesEntriesAreDeleted(Client entidad)
@@ -83,7 +82,7 @@ namespace CM.Dominio.Repositories
         {
             return context.Clients
                  .Include(x => x.Addresses)
-                 .SingleOrDefault(x => x.Id == id);
+                 .FirstOrDefault(x => x.Id == id);
         }
 
         public bool SaveChanges()
@@ -93,7 +92,7 @@ namespace CM.Dominio.Repositories
 
         public bool Update(int id, Client entidad)
         {
-            var client = context.Clients.SingleOrDefault(x => x.Id == id);
+            var client = context.Clients.FirstOrDefault(x => x.Id == id);
 
             client.Name = entidad.Name;
             client.LastName = entidad.LastName;
