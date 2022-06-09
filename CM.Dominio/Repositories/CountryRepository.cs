@@ -23,11 +23,12 @@ namespace CM.Dominio.Repositories
         public Country Add(Country entidad)
         {
             //Hacer validaciones
-            if (!IsValidTo(entidad, Actions.Creating))
+            if (ExistsWithNameOnCreating(entidad.Name))
                 return null;
 
             context.Add(entidad);
-            return context.SaveChanges() > 0 ? entidad : null;
+            context.SaveChanges();
+            return entidad;
         }
 
         public bool Delete(int id)
@@ -35,7 +36,7 @@ namespace CM.Dominio.Repositories
             var country = context.Countries.SingleOrDefault(x => x.Id == id);
 
             //Hacer validaciones
-            if (!IsValidTo(country, Actions.Deleting))
+            if (HasRelatedEntityOnDatabase(country.Id))
                 return false;
 
             context.Remove(country);
@@ -47,7 +48,7 @@ namespace CM.Dominio.Repositories
         {
             //Si ya existe un pais con este nombre en la base de datos
             return context.Countries
-                .Any(x => x.Name == name);
+                .Any(x => x.Name.ToLower() == name.ToLower());
         }
 
         public bool ExistsWithNameOnUpdating(string name, int id)
@@ -76,18 +77,9 @@ namespace CM.Dominio.Repositories
         {
             //si este pais pertenece a una direccion registrada o tiene una o varias ciudades relacionadas...
             return context.Countries
+                .Include(x => x.Addresses)
+                .Include(x => x.Cities)
                 .Any(x => x.Id == id && (x.Addresses.Count > 0 || x.Cities.Count > 0));
-        }
-
-        public bool IsValidTo(Country entidad, Actions action)
-        {
-            return action switch
-            {
-                Actions.Creating => !ExistsWithNameOnCreating(entidad.Name),
-                Actions.Updating => !ExistsWithNameOnUpdating(entidad.Name, entidad.Id),
-                Actions.Deleting => !HasRelatedEntityOnDatabase(entidad.Id),
-                _ => false
-            };
         }
 
         public bool Update(int id, Country entidad)
@@ -97,8 +89,11 @@ namespace CM.Dominio.Repositories
             country.Name = entidad.Name;
 
             //Hacer validaciones
-            if (!IsValidTo(country, Actions.Updating))
+            if (ExistsWithNameOnUpdating(country.Name, country.Id))
+            {
+                context.Entry(country).State = EntityState.Unchanged;
                 return false;
+            }
 
             context.Update(country);
             return context.SaveChanges() > 0;

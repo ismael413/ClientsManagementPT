@@ -2,6 +2,7 @@
 using CM.DominioApi.Port.Models;
 using CM.DominioApi.Port.Models.Addreses;
 using Microsoft.EntityFrameworkCore;
+using CM.Persistence.Adapter.Configuration;
 
 namespace CM.Persistence.Adapter.Context
 {
@@ -13,6 +14,15 @@ namespace CM.Persistence.Adapter.Context
             base.OnConfiguring(optionsBuilder);
 
             optionsBuilder.UseInMemoryDatabase("ClientsAddressManagementDB");
+        }
+
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            base.OnModelCreating(builder);
+
+            builder.ApplyConfiguration(new ClientConfiguration());
+            builder.ApplyConfiguration(new AddressConfiguration());
+
         }
 
         public DbSet<Enterprise> Enterprises { get; set; }

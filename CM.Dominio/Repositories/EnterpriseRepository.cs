@@ -22,8 +22,13 @@ namespace CM.Dominio.Repositories
 
         public Enterprise Add(Enterprise entidad)
         {
+            if (ExistsWithNameOnCreating(entidad.Name))
+                return null;
+
             context.Add(entidad);
-            return context.SaveChanges() > 0 ? entidad : null;
+            context.SaveChanges();
+
+            return entidad;
         }
 
         public bool Delete(int id)
@@ -31,7 +36,7 @@ namespace CM.Dominio.Repositories
             var enterprise = context.Enterprises.SingleOrDefault(x => x.Id == id);
 
             //hacer validaciones
-            if (!IsValidTo(enterprise, Actions.Deleting))
+            if (HasRelatedEntityOnDatabase(enterprise.Id))
                 return false;
 
             context.Remove(enterprise);
@@ -69,18 +74,8 @@ namespace CM.Dominio.Repositories
         {
             //si esta empresa posee clientes registrados...
             return context.Enterprises
+                .Include(x => x.Clients)
                 .Any(x => x.Id == id && x.Clients.Count > 0);
-        }
-
-        public bool IsValidTo(Enterprise entidad, Actions action)
-        {
-            return action switch
-            {
-                Actions.Creating => !ExistsWithNameOnCreating(entidad.Name),
-                Actions.Updating => !ExistsWithNameOnUpdating(entidad.Name, entidad.Id),
-                Actions.Deleting => !HasRelatedEntityOnDatabase(entidad.Id),
-                _ => false
-            };
         }
 
         public bool Update(int id, Enterprise entidad)
@@ -91,8 +86,11 @@ namespace CM.Dominio.Repositories
             enterprise.Description = entidad.Description;
 
             //Hacer validaciones
-            if (!IsValidTo(enterprise, Actions.Updating))
+            if (ExistsWithNameOnUpdating(enterprise.Name, enterprise.Id))
+            {
+                context.Entry(enterprise).State = EntityState.Unchanged;
                 return false;
+            }
 
             context.Update(enterprise);
             return context.SaveChanges() > 0;

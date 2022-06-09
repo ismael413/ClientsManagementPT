@@ -11,9 +11,9 @@ using System.Threading.Tasks;
 
 namespace CM.Dominio.Repositories
 {
-    public class ClientRepository : IBaseRepository<Client, int>,
-        IValidations<Client>,
-        IClientRepository
+    public class ClientRepository :
+        IClientsValidations,
+        IClientRepository<Client, int>
     {
         private readonly ApplicationDbContext context;
         private readonly IAddressRepository addressRepository;
@@ -28,20 +28,22 @@ namespace CM.Dominio.Repositories
 
         public Client Add(Client entidad)
         {
+            if (ExistsWithNameOnCreating(entidad.Name + " " + entidad.LastName))
+                return null;
+
             context.Add(entidad);
-            return context.SaveChanges() > 0 ? entidad : null;
+            return entidad;
         }
 
-        public bool Delete(int id)
+        public void Delete(Client client)
         {
-            var client = context.Clients.SingleOrDefault(x => x.Id == id);
+            //obtener direcciones del cliente a eliminar
+            var addresses = addressRepository.GetAddressesByClientId(client.Id);
 
             //eliminar direcciones del cliente, si las hay...
-            addressRepository.RemoveClientAddresses(client.Id);
+            addressRepository.RemoveClientAddresses(addresses);
 
             context.Remove(client);
-
-            return context.SaveChanges() > 0;
         }
 
         public bool ExistsWithNameOnCreating(string name)
@@ -58,15 +60,15 @@ namespace CM.Dominio.Repositories
                 .Any(x => x.Id != id && (x.Name + " " + x.LastName).ToLower() == name.ToLower());
         }
 
+        public IEnumerable<Address> GetAddresses(int id)
+        {
+            return addressRepository.GetAddressesByClientId(id);
+        }
+
         public IEnumerable<Client> GetAll()
         {
             return context.Clients
                 .Include(x => x.Addresses);
-        }
-
-        public IEnumerable<Address> GetAddresses(int clientId)
-        {
-            return addressRepository.GetClientAddresses(clientId);
         }
 
         public Client GetOne(int id)
@@ -76,27 +78,8 @@ namespace CM.Dominio.Repositories
                  .SingleOrDefault(x => x.Id == id);
         }
 
-        public bool HasRelatedEntityOnDatabase(int id)
+        public bool SaveChanges()
         {
-            //Normalmente un cliente debe de poder eliminarse en conjunto con sus direcciones...
-            //Esta condicion puede cambiar si se agrega una entidad que pertenezca al cliente y que no pueda ser sensible a eliminaciones.
-            return false;
-        }
-
-        public bool IsValidTo(Client entidad, Actions action)
-        {
-            return action switch
-            {
-                Actions.Creating => !ExistsWithNameOnCreating(entidad.Name),
-                Actions.Updating => !ExistsWithNameOnUpdating(entidad.Name, entidad.Id),
-                Actions.Deleting => !HasRelatedEntityOnDatabase(entidad.Id),
-                _ => false
-            };
-        }
-
-        public bool RemoveAddresses(int clientId)
-        {
-            addressRepository.RemoveClientAddresses(clientId);
             return context.SaveChanges() > 0;
         }
 
@@ -110,11 +93,16 @@ namespace CM.Dominio.Repositories
             client.Genre = entidad.Genre;
 
             //Hacer validaciones
-            if (!IsValidTo(client, Actions.Updating))
+            if (ExistsWithNameOnUpdating(client.Name + " " + client.LastName, client.Id))
+            {
+                context.Entry(client).State = EntityState.Unchanged;
                 return false;
+            }
 
             context.Update(client);
             return context.SaveChanges() > 0;
         }
+
+        
     }
 }

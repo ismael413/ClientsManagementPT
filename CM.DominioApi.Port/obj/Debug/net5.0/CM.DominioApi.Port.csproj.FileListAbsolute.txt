@@ -1,5 +1,12 @@
-C:\Users\Administrator.DESKTOP-NKPOVCB\source\repos\ClientsManagementPT\ClientsManagementPT\CM.DominioApi.Port\obj\Debug\net5.0\CM.DominioApi.Port.csproj.AssemblyReference.cache
 C:\Users\Administrator.DESKTOP-NKPOVCB\source\repos\ClientsManagementPT\ClientsManagementPT\CM.DominioApi.Port\obj\Debug\net5.0\CM.DominioApi.Port.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\Administrator.DESKTOP-NKPOVCB\source\repos\ClientsManagementPT\ClientsManagementPT\CM.DominioApi.Port\obj\Debug\net5.0\CM.DominioApi.Port.AssemblyInfoInputs.cache
 C:\Users\Administrator.DESKTOP-NKPOVCB\source\repos\ClientsManagementPT\ClientsManagementPT\CM.DominioApi.Port\obj\Debug\net5.0\CM.DominioApi.Port.AssemblyInfo.cs
 C:\Users\Administrator.DESKTOP-NKPOVCB\source\repos\ClientsManagementPT\ClientsManagementPT\CM.DominioApi.Port\obj\Debug\net5.0\CM.DominioApi.Port.csproj.CoreCompileInputs.cache
+C:\Users\Administrator.DESKTOP-NKPOVCB\source\repos\ClientsManagementPT\ClientsManagementPT\CM.DominioApi.Port\bin\Debug\net5.0\CM.DominioApi.Port.deps.json
+C:\Users\Administrator.DESKTOP-NKPOVCB\source\repos\ClientsManagementPT\ClientsManagementPT\CM.DominioApi.Port\bin\Debug\net5.0\CM.DominioApi.Port.dll
+C:\Users\Administrator.DESKTOP-NKPOVCB\source\repos\ClientsManagementPT\ClientsManagementPT\CM.DominioApi.Port\bin\Debug\net5.0\ref\CM.DominioApi.Port.dll
+C:\Users\Administrator.DESKTOP-NKPOVCB\source\repos\ClientsManagementPT\ClientsManagementPT\CM.DominioApi.Port\bin\Debug\net5.0\CM.DominioApi.Port.pdb
+C:\Users\Administrator.DESKTOP-NKPOVCB\source\repos\ClientsManagementPT\ClientsManagementPT\CM.DominioApi.Port\obj\Debug\net5.0\CM.DominioApi.Port.dll
+C:\Users\Administrator.DESKTOP-NKPOVCB\source\repos\ClientsManagementPT\ClientsManagementPT\CM.DominioApi.Port\obj\Debug\net5.0\ref\CM.DominioApi.Port.dll
+C:\Users\Administrator.DESKTOP-NKPOVCB\source\repos\ClientsManagementPT\ClientsManagementPT\CM.DominioApi.Port\obj\Debug\net5.0\CM.DominioApi.Port.pdb
+C:\Users\Administrator.DESKTOP-NKPOVCB\source\repos\ClientsManagementPT\ClientsManagementPT\CM.DominioApi.Port\obj\Debug\net5.0\CM.DominioApi.Port.csproj.AssemblyReference.cache

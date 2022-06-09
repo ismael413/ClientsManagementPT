@@ -3,3 +3,13 @@ C:\Users\Administrator.DESKTOP-NKPOVCB\source\repos\ClientsManagementPT\ClientsM
 C:\Users\Administrator.DESKTOP-NKPOVCB\source\repos\ClientsManagementPT\ClientsManagementPT\CM.Persistence.Adapter\obj\Debug\net5.0\CM.Persistence.Adapter.AssemblyInfoInputs.cache
 C:\Users\Administrator.DESKTOP-NKPOVCB\source\repos\ClientsManagementPT\ClientsManagementPT\CM.Persistence.Adapter\obj\Debug\net5.0\CM.Persistence.Adapter.AssemblyInfo.cs
 C:\Users\Administrator.DESKTOP-NKPOVCB\source\repos\ClientsManagementPT\ClientsManagementPT\CM.Persistence.Adapter\obj\Debug\net5.0\CM.Persistence.Adapter.csproj.CoreCompileInputs.cache
+C:\Users\Administrator.DESKTOP-NKPOVCB\source\repos\ClientsManagementPT\ClientsManagementPT\CM.Persistence.Adapter\bin\Debug\net5.0\CM.Persistence.Adapter.deps.json
+C:\Users\Administrator.DESKTOP-NKPOVCB\source\repos\ClientsManagementPT\ClientsManagementPT\CM.Persistence.Adapter\bin\Debug\net5.0\CM.Persistence.Adapter.dll
+C:\Users\Administrator.DESKTOP-NKPOVCB\source\repos\ClientsManagementPT\ClientsManagementPT\CM.Persistence.Adapter\bin\Debug\net5.0\ref\CM.Persistence.Adapter.dll
+C:\Users\Administrator.DESKTOP-NKPOVCB\source\repos\ClientsManagementPT\ClientsManagementPT\CM.Persistence.Adapter\bin\Debug\net5.0\CM.Persistence.Adapter.pdb
+C:\Users\Administrator.DESKTOP-NKPOVCB\source\repos\ClientsManagementPT\ClientsManagementPT\CM.Persistence.Adapter\bin\Debug\net5.0\CM.DominioApi.Port.dll
+C:\Users\Administrator.DESKTOP-NKPOVCB\source\repos\ClientsManagementPT\ClientsManagementPT\CM.Persistence.Adapter\bin\Debug\net5.0\CM.DominioApi.Port.pdb
+C:\Users\Administrator.DESKTOP-NKPOVCB\source\repos\ClientsManagementPT\ClientsManagementPT\CM.Persistence.Adapter\obj\Debug\net5.0\CM.Persistence.Adapter.csproj.CopyComplete
+C:\Users\Administrator.DESKTOP-NKPOVCB\source\repos\ClientsManagementPT\ClientsManagementPT\CM.Persistence.Adapter\obj\Debug\net5.0\CM.Persistence.Adapter.dll
+C:\Users\Administrator.DESKTOP-NKPOVCB\source\repos\ClientsManagementPT\ClientsManagementPT\CM.Persistence.Adapter\obj\Debug\net5.0\ref\CM.Persistence.Adapter.dll
+C:\Users\Administrator.DESKTOP-NKPOVCB\source\repos\ClientsManagementPT\ClientsManagementPT\CM.Persistence.Adapter\obj\Debug\net5.0\CM.Persistence.Adapter.pdb

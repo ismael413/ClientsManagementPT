@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace CM.DominioApi.Port.Ports
 {
-    public interface IAddressRepository
+    public interface IAddressRepository :
+        IBaseRepository<Address,int>
     {
-        IEnumerable<Address> GetClientAddresses(int clientId);
-        bool AddClientAddress(Address address, int clientId);
-        bool RemoveClientAddress(int addressId, int clientId);
-        void RemoveClientAddresses(int clientId);
+        string SetFullAddressString(Address address);
+        IEnumerable<Address> GetAddressesByClientId(int clientId);
+        void RemoveClientAddresses(IEnumerable<Address> addresses);
     }
 }

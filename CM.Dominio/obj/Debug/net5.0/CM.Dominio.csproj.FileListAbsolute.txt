@@ -3,3 +3,15 @@ C:\Users\Administrator.DESKTOP-NKPOVCB\source\repos\ClientsManagementPT\ClientsM
 C:\Users\Administrator.DESKTOP-NKPOVCB\source\repos\ClientsManagementPT\ClientsManagementPT\CM.Dominio\obj\Debug\net5.0\CM.Dominio.AssemblyInfoInputs.cache
 C:\Users\Administrator.DESKTOP-NKPOVCB\source\repos\ClientsManagementPT\ClientsManagementPT\CM.Dominio\obj\Debug\net5.0\CM.Dominio.AssemblyInfo.cs
 C:\Users\Administrator.DESKTOP-NKPOVCB\source\repos\ClientsManagementPT\ClientsManagementPT\CM.Dominio\obj\Debug\net5.0\CM.Dominio.csproj.CoreCompileInputs.cache
+C:\Users\Administrator.DESKTOP-NKPOVCB\source\repos\ClientsManagementPT\ClientsManagementPT\CM.Dominio\bin\Debug\net5.0\CM.Dominio.deps.json
+C:\Users\Administrator.DESKTOP-NKPOVCB\source\repos\ClientsManagementPT\ClientsManagementPT\CM.Dominio\bin\Debug\net5.0\CM.Dominio.dll
+C:\Users\Administrator.DESKTOP-NKPOVCB\source\repos\ClientsManagementPT\ClientsManagementPT\CM.Dominio\bin\Debug\net5.0\ref\CM.Dominio.dll
+C:\Users\Administrator.DESKTOP-NKPOVCB\source\repos\ClientsManagementPT\ClientsManagementPT\CM.Dominio\bin\Debug\net5.0\CM.Dominio.pdb
+C:\Users\Administrator.DESKTOP-NKPOVCB\source\repos\ClientsManagementPT\ClientsManagementPT\CM.Dominio\bin\Debug\net5.0\CM.DominioApi.Port.dll
+C:\Users\Administrator.DESKTOP-NKPOVCB\source\repos\ClientsManagementPT\ClientsManagementPT\CM.Dominio\bin\Debug\net5.0\CM.Persistence.Adapter.dll
+C:\Users\Administrator.DESKTOP-NKPOVCB\source\repos\ClientsManagementPT\ClientsManagementPT\CM.Dominio\bin\Debug\net5.0\CM.DominioApi.Port.pdb
+C:\Users\Administrator.DESKTOP-NKPOVCB\source\repos\ClientsManagementPT\ClientsManagementPT\CM.Dominio\bin\Debug\net5.0\CM.Persistence.Adapter.pdb
+C:\Users\Administrator.DESKTOP-NKPOVCB\source\repos\ClientsManagementPT\ClientsManagementPT\CM.Dominio\obj\Debug\net5.0\CM.Dominio.csproj.CopyComplete
+C:\Users\Administrator.DESKTOP-NKPOVCB\source\repos\ClientsManagementPT\ClientsManagementPT\CM.Dominio\obj\Debug\net5.0\CM.Dominio.dll
+C:\Users\Administrator.DESKTOP-NKPOVCB\source\repos\ClientsManagementPT\ClientsManagementPT\CM.Dominio\obj\Debug\net5.0\ref\CM.Dominio.dll
+C:\Users\Administrator.DESKTOP-NKPOVCB\source\repos\ClientsManagementPT\ClientsManagementPT\CM.Dominio\obj\Debug\net5.0\CM.Dominio.pdb

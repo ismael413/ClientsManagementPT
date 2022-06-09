@@ -8,7 +8,8 @@ using System.Linq;
 
 namespace CM.Dominio.Repositories
 {
-    public class AddressRepository : IAddressRepository
+    public class AddressRepository : IAddressRepository,
+        IAddressValidations
     {
         private readonly ApplicationDbContext context;
 
@@ -17,35 +18,88 @@ namespace CM.Dominio.Repositories
             context = _context;
         }
 
-        public bool AddClientAddress(Address address, int clientId)
+        public Address Add(Address address)
         {
-            address.ClientId = clientId;
+            //Si existe esta direccion para un mismo cliente, no agregarla...
+            if (ExistsSameAddressForSameClientOnCreating(address.FullAddress, address.ClientId))
+                return null;
+
             context.Addresses.Add(address);
+            context.SaveChanges();
+            return address;
+        }
+
+        public bool Delete(int id)
+        {
+            var address = context.Addresses.SingleOrDefault(x => x.Id == id);
+            context.Addresses.Remove(address);
             return context.SaveChanges() > 0;
         }
 
-        public IEnumerable<Address> GetClientAddresses(int clientId)
+        public bool ExistsSameAddressForSameClientOnCreating(string fullAddress, int clientId)
         {
-           return context.Addresses
-                .Include(x => x.Client)
-                .Include(x => x.Country)
-                .Include(x => x.City)
+            //Si ya existe la misma direccion para el mismo cliente...
+            return context.Addresses
+                .Any(x => x.FullAddress.ToLower() == fullAddress.ToLower() && x.ClientId == clientId);
+        }
+
+        public bool ExistsSameAddressForSameClientOnUpdating(string fullAddress, int id, int clientId)
+        {
+            //Si ya existe la misma direccion para el mismo cliente...
+            return context.Addresses
+                .Any(x => x.Id != id && x.FullAddress.ToLower() == fullAddress.ToLower() && x.ClientId == clientId);
+        }
+
+        public IEnumerable<Address> GetAddressesByClientId(int clientId)
+        {
+            return context.Addresses
                 .Where(x => x.ClientId == clientId);
         }
 
-        public bool RemoveClientAddress(int addressId, int clientId)
+        public IEnumerable<Address> GetAll()
         {
-            var address = context.Addresses.SingleOrDefault(x => x.Id == addressId && x.ClientId == clientId);
-            context.Addresses.Add(address);
-            return context.SaveChanges() > 0;
+            return context.Addresses
+               .Include(x => x.Client)
+               .Include(x => x.Country)
+               .Include(x => x.City);
         }
 
-        public void RemoveClientAddresses(int clientId)
+        public Address GetOne(int id)
         {
-            var addresses = context.Addresses.Where(x => x.ClientId == clientId);
-            
-            if(addresses.Any())
-                context.RemoveRange(addresses);
+            return context.Addresses
+               .SingleOrDefault(x => x.Id == id);
+        }
+
+        public void RemoveClientAddresses(IEnumerable<Address> addresses)
+        {
+            context.Addresses.RemoveRange(addresses);
+        }
+
+        public string SetFullAddressString(Address address)
+        {
+            return address.Country.Name + " " + address.City.Name + " " + address.StreetName + " " + address.BuildingName;
+        }
+
+        public bool Update(int id, Address entidad)
+        {
+            var address = context.Addresses.SingleOrDefault(x => x.Id == id);
+
+            address.ClientId = entidad.ClientId;
+            address.CountryId = entidad.CountryId;
+            address.CityId = entidad.CityId;
+            address.StreetName = entidad.StreetName;
+            address.BuildingName = entidad.BuildingName;
+            address.FullAddress = entidad.FullAddress;
+
+            //hacer validaciones
+            if (ExistsSameAddressForSameClientOnUpdating(address.FullAddress, address.Id, address.ClientId))
+            {
+                context.Entry(address).State = EntityState.Unchanged;
+                return false;
+            }
+
+            context.Addresses.Update(address);
+            return context.SaveChanges() > 0;
         }
     }
 }

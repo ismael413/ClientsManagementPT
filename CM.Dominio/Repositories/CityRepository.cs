@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 namespace CM.Dominio.Repositories
 {
     public class CityRepository : IBaseRepository<City, int>,
-        IValidations<City>
+        ICitiesValidation
     {
         private readonly ApplicationDbContext context;
 
@@ -23,7 +23,7 @@ namespace CM.Dominio.Repositories
         public City Add(City entidad)
         {
             //Hacer validaciones
-            if (!IsValidTo(entidad, Actions.Creating))
+            if (ExistsWithNameForSameCountryOnCreating(entidad.Name, entidad.CountryId))
                 return null;
 
             context.Add(entidad);
@@ -42,25 +42,25 @@ namespace CM.Dominio.Repositories
             var city = context.Cities.SingleOrDefault(x => x.Id == id);
 
             //hacer validaciones
-            if (!IsValidTo(city, Actions.Deleting))
+            if (HasRelatedEntityOnDatabase(city.Id))
                 return false;
 
             context.Remove(city);
             return context.SaveChanges() > 0;
         }
 
-        public bool ExistsWithNameOnCreating(string name)
+        public bool ExistsWithNameForSameCountryOnCreating(string name, int countryId)
         {
-            //Si ya existe una ciudad con este nombre en la base de datos
+            //Si ya existe una ciudad con este nombre para el mismo pais en la base de datos
             return context.Cities
-                .Any(x => x.Name == name);
+                .Any(x => x.Name == name && x.CountryId == countryId);
         }
 
-        public bool ExistsWithNameOnUpdating(string name, int id)
+        public bool ExistsWithNameForSameCountryOnUpdating(string name, int id, int countryId)
         {
-            //Si ya existe una ciudad diferente con el mismo nombre en la base de datos al actualizar
+            //Si ya existe una ciudad diferente con el mismo nombre para el mismo pais en la base de datos al actualizar
             return context.Cities
-                .Any(x => x.Id != id && x.Name == name);
+                .Any(x => x.Id != id && x.Name == name && x.CountryId == countryId);
         }
 
         public IEnumerable<City> GetAll()
@@ -78,17 +78,6 @@ namespace CM.Dominio.Repositories
                  .SingleOrDefault(x => x.Id == id);
         }
 
-        public bool IsValidTo(City entidad, Actions action)
-        {
-            return action switch
-            {
-                Actions.Creating => !ExistsWithNameOnCreating(entidad.Name),
-                Actions.Updating => !ExistsWithNameOnUpdating(entidad.Name,entidad.Id),
-                Actions.Deleting => !HasRelatedEntityOnDatabase(entidad.Id),
-                _ => false
-            };
-        }
-
         public bool Update(int id, City entidad)
         {
             var city = context.Cities.SingleOrDefault(x => x.Id == id);
@@ -96,8 +85,11 @@ namespace CM.Dominio.Repositories
             city.CountryId = entidad.CountryId;
 
             //Hacer validaciones
-            if (!IsValidTo(city, Actions.Updating))
+            if (ExistsWithNameForSameCountryOnUpdating(city.Name, city.Id, city.CountryId))
+            {
+                context.Entry(city).State = EntityState.Unchanged;
                 return false;
+            }
 
 
             context.Update(city);

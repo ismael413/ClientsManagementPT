@@ -1,4 +1,5 @@
-﻿using CM.DominioApi.Port.Models.Addreses;
+﻿using CM.DominioApi.Port.Models;
+using CM.DominioApi.Port.Models.Addreses;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,9 +8,14 @@ using System.Threading.Tasks;
 
 namespace CM.DominioApi.Port.Ports
 {
-    public interface IClientRepository
+    public interface IClientRepository<T, TKey> where T: Client
     {
-        IEnumerable<Address> GetAddresses(int clientId);
-        bool RemoveAddresses(int clientId);
+        IEnumerable<T> GetAll();
+        T GetOne(TKey id);
+        T Add(T entidad);
+        bool Update(TKey id, T entidad);
+        void Delete(T id);
+        bool SaveChanges();
+        IEnumerable<Address> GetAddresses(TKey id);
     }
 }
