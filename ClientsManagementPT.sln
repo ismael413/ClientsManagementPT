@@ -11,6 +11,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CM.Persistence.Adapter", "C
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CM.Dominio.Tests", "CM.Dominio.Tests\CM.Dominio.Tests.csproj", "{555E9CEE-0AA3-47B0-B523-75B80274373D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CM.ApiREST.Adapter", "CM.ApiREST.Adapter\CM.ApiREST.Adapter.csproj", "{BCD893FC-F207-4C9D-B8AC-092336F9B287}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{555E9CEE-0AA3-47B0-B523-75B80274373D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{555E9CEE-0AA3-47B0-B523-75B80274373D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{555E9CEE-0AA3-47B0-B523-75B80274373D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BCD893FC-F207-4C9D-B8AC-092336F9B287}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BCD893FC-F207-4C9D-B8AC-092336F9B287}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BCD893FC-F207-4C9D-B8AC-092336F9B287}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BCD893FC-F207-4C9D-B8AC-092336F9B287}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
