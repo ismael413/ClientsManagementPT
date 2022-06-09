@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CM.Dominio.Tests", "CM.Domi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CM.ApiREST.Adapter", "CM.ApiREST.Adapter\CM.ApiREST.Adapter.csproj", "{BCD893FC-F207-4C9D-B8AC-092336F9B287}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CM.ApiREST.Adapter.Tests", "CM.ApiREST.Adapter.Tests\CM.ApiREST.Adapter.Tests.csproj", "{B7484EB6-D7A7-417A-83AC-E71A6E2920DD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{BCD893FC-F207-4C9D-B8AC-092336F9B287}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BCD893FC-F207-4C9D-B8AC-092336F9B287}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BCD893FC-F207-4C9D-B8AC-092336F9B287}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B7484EB6-D7A7-417A-83AC-E71A6E2920DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B7484EB6-D7A7-417A-83AC-E71A6E2920DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B7484EB6-D7A7-417A-83AC-E71A6E2920DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B7484EB6-D7A7-417A-83AC-E71A6E2920DD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

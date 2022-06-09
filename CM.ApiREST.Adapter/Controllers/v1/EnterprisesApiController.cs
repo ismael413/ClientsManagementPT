@@ -4,10 +4,6 @@ using CM.Dominio.Repositories;
 using CM.DominioApi.Port.Models;
 using CM.Persistence.Adapter.Context;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace CM.ApiREST.Adapter.Controllers.v1
 {

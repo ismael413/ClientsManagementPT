@@ -17,5 +17,6 @@ namespace CM.DominioApi.Port.Ports
         void Delete(T id);
         bool SaveChanges();
         IEnumerable<Address> GetAddresses(TKey id);
+        bool ConfirmStatesEntriesAreDeleted(T entidad);
     }
 }

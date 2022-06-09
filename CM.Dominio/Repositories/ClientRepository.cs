@@ -35,6 +35,14 @@ namespace CM.Dominio.Repositories
             return entidad;
         }
 
+        public bool ConfirmStatesEntriesAreDeleted(Client entidad)
+        {
+            var addresses = addressRepository.GetAddressesByClientId(entidad.Id);
+
+            return context.Entry(addresses.First()).State == EntityState.Deleted && 
+                context.Entry(entidad).State == EntityState.Deleted;
+        }
+
         public void Delete(Client client)
         {
             //obtener direcciones del cliente a eliminar
